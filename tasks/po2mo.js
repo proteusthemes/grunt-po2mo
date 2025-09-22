@@ -8,7 +8,8 @@
 
 'use strict';
 
-var exec = require('child_process').execSync;
+var spawnSync = require('child_process').spawnSync;
+var path = require('path');
 
 module.exports = function(grunt) {
 
@@ -25,16 +26,22 @@ module.exports = function(grunt) {
       if (dest.indexOf('.po') > -1) {
         dest = dest.replace('.po', '.mo');
       }
-      grunt.file.write(dest);
+      // Ensure destination directory exists
+      grunt.file.mkdir(path.dirname(dest));
 
-      var command = 'msgfmt -o ' + dest + ' ' + src;
+      var args = ['-o', dest, src];
+      grunt.verbose.writeln('Executing: msgfmt ' + args.join(' '));
+      var result = spawnSync('msgfmt', args);
 
-      grunt.verbose.writeln('Executing: ' + command);
-      var result = exec(command);
-      grunt.verbose.writeln('Executed with status: ' + result.status);
+      if (result.error) {
+        grunt.fail.warn('Failed to execute msgfmt: ' + result.error.message);
+        return;
+      }
 
       if (result.status !== 0) {
-        grunt.log.error(result.stderr);
+        var stderr = result.stderr ? result.stderr.toString() : '';
+        grunt.fail.warn('msgfmt exited with code ' + result.status + (stderr ? ('\n' + stderr) : ''));
+        return;
       }
 
       if (options.deleteSrc) {
