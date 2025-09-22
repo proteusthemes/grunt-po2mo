@@ -1,13 +1,13 @@
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
-
-[![Build Status](https://travis-ci.org/MicheleBertoli/grunt-po2mo.svg)](https://travis-ci.org/MicheleBertoli/grunt-po2mo)
-
 # grunt-po2mo
+
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 > Compile .po files into binary .mo files with msgfmt.
 
 ## Getting Started
+
 This plugin requires:
+
 - Grunt `>=0.4.0`
 - [gettext](https://www.gnu.org/software/gettext/) (Installation instructions: [Mac](http://brewformulas.org/Gettext), [Windows](http://gnuwin32.sourceforge.net/packages/gettext.htm) and [Linux](http://ftp.gnu.org/pub/gnu/gettext/))
 
@@ -26,6 +26,7 @@ grunt.loadNpmTasks('grunt-po2mo');
 ## The "po2mo" task
 
 ### Overview
+
 In your project's Gruntfile, add a section named `po2mo` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -41,6 +42,7 @@ grunt.initConfig({
 ### Options
 
 #### options.deleteSrc
+
 Type: `Boolean`
 Default value: `false`
 
@@ -58,6 +60,7 @@ grunt.initConfig({
   },
 })
 ```
+
 ```js
 grunt.initConfig({
   po2mo: {
@@ -73,4 +76,5 @@ grunt.initConfig({
 ```
 
 ## Contributing
+
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
