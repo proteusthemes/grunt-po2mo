@@ -1,7 +1,7 @@
 {
   "name": "grunt-po2mo",
   "description": "Compile .po files into binary .mo files with msgfmt.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/proteusthemes/grunt-po2mo",
   "author": {
     "name": "Michele Bertoli",
@@ -32,7 +32,7 @@
     "grunt-contrib-nodeunit": "~0.2.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin"
