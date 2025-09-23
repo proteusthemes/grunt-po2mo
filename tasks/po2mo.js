@@ -20,7 +20,7 @@ module.exports = (grunt) => {
         deleteSrc: false,
       });
 
-      this.files.forEach((file) => {
+      for (const file of this.files) {
         const src = file.src[0];
         let dest = file.dest;
         if (dest.endsWith(".po")) {
@@ -35,7 +35,7 @@ module.exports = (grunt) => {
 
         if (result.error) {
           grunt.fail.warn("Failed to execute msgfmt: " + result.error.message);
-          return;
+          continue;
         }
 
         if (result.status !== 0) {
@@ -45,13 +45,13 @@ module.exports = (grunt) => {
               result.status +
               (stderr ? "\n" + stderr : "")
           );
-          return;
+          continue;
         }
 
         if (options.deleteSrc) {
           grunt.file.delete(src);
         }
-      });
+      }
     }
   );
 };
