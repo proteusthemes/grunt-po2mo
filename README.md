@@ -1,17 +1,17 @@
 # grunt-po2mo
 
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+[![No Maintenance Intended](https://unmaintained.tech/badge.svg)](https://unmaintained.tech/)
 
-> Compile .po files into binary .mo files with msgfmt.
+Compile .po files into binary .mo files with msgfmt.
 
 ## Getting Started
 
 This plugin requires:
 
-- Grunt `>=0.4.0`
-- [gettext](https://www.gnu.org/software/gettext/) (Installation instructions: [Mac](http://brewformulas.org/Gettext), [Windows](http://gnuwin32.sourceforge.net/packages/gettext.htm) and [Linux](http://ftp.gnu.org/pub/gnu/gettext/))
+- Grunt
+- [gettext](https://www.gnu.org/software/gettext/) (Installation instructions: [Mac](https://brewformulas.org/Gettext), [Windows](https://gnuwin32.sourceforge.net/packages/gettext.htm) and [Linux](https://ftp.gnu.org/pub/gnu/gettext/))
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](https://gruntjs.com/) before, be sure to check out the [Getting Started](https://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](https://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command — at least if you want the original, and not this fork:
 
 ```shell
 npm install grunt-po2mo --save-dev
@@ -23,7 +23,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-po2mo');
 ```
 
-## The "po2mo" task
+## The `po2mo` task
 
 ### Overview
 
@@ -43,7 +43,7 @@ grunt.initConfig({
 
 #### options.deleteSrc
 
-Type: `Boolean`
+Type: `Boolean`  
 Default value: `false`
 
 Will delete the source .po file.
@@ -74,7 +74,3 @@ grunt.initConfig({
   },
 })
 ```
-
-## Contributing
-
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
