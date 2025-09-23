@@ -1,16 +1,16 @@
 "use strict";
 
-var grunt = require("grunt");
-var spawnSync = require("child_process").spawnSync;
+const grunt = require("grunt");
+const spawnSync = require("child_process").spawnSync;
 
 exports.po2mo = {
-  setUp: function (done) {
+  setUp: (done) => {
     done();
   },
-  stage: function (test) {
+  stage: (test) => {
     test.expect(2);
 
-    var result = spawnSync("msgunfmt", ["tmp/fr.mo"]);
+    const result = spawnSync("msgunfmt", ["tmp/fr.mo"]);
     if (result.status !== 0) {
       test.ok(
         false,
@@ -20,22 +20,16 @@ exports.po2mo = {
       return;
     }
 
-    var poText = result.stdout.toString();
-    test.ok(
-      poText.indexOf('msgid "My name is %s.\\n"') !== -1,
-      "Expected msgid missing"
-    );
-    test.ok(
-      poText.indexOf('msgstr "Je m\'appelle %s.\\n"') !== -1,
-      "Expected msgstr missing"
-    );
+    const poText = result.stdout.toString();
+    test.ok(poText.includes('msgid "My name is %s.\\n"'), "Expected msgid missing");
+    test.ok(poText.includes('msgstr "Je m\'appelle %s.\\n"'), "Expected msgstr missing");
 
     test.done();
   },
-  prod: function (test) {
+  prod: (test) => {
     test.expect(1);
 
-    var expected = grunt.file.exists("tmp/fixtures/fr.po");
+    const expected = grunt.file.exists("tmp/fixtures/fr.po");
     test.equal(expected, false);
 
     test.done();

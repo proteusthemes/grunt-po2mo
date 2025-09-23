@@ -8,30 +8,30 @@
 
 "use strict";
 
-var spawnSync = require("child_process").spawnSync;
-var path = require("path");
+const spawnSync = require("child_process").spawnSync;
+const path = require("path");
 
-module.exports = function (grunt) {
+module.exports = (grunt) => {
   grunt.registerMultiTask(
     "po2mo",
     "Compile .po files into binary .mo files with msgfmt.",
     function () {
-      var options = this.options({
+      const options = this.options({
         deleteSrc: false,
       });
 
-      this.files.forEach(function (file) {
-        var src = file.src[0];
-        var dest = file.dest;
-        if (dest.indexOf(".po") > -1) {
-          dest = dest.replace(".po", ".mo");
+      this.files.forEach((file) => {
+        const src = file.src[0];
+        let dest = file.dest;
+        if (dest.endsWith(".po")) {
+          dest = dest.slice(0, -3) + ".mo";
         }
         // Ensure destination directory exists
         grunt.file.mkdir(path.dirname(dest));
 
-        var args = ["-o", dest, src];
+        const args = ["-o", dest, src];
         grunt.verbose.writeln("Executing: msgfmt " + args.join(" "));
-        var result = spawnSync("msgfmt", args);
+        const result = spawnSync("msgfmt", args);
 
         if (result.error) {
           grunt.fail.warn("Failed to execute msgfmt: " + result.error.message);
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         }
 
         if (result.status !== 0) {
-          var stderr = result.stderr ? result.stderr.toString() : "";
+          const stderr = result.stderr ? result.stderr.toString() : "";
           grunt.fail.warn(
             "msgfmt exited with code " +
               result.status +

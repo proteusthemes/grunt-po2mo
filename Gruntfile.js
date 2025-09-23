@@ -8,7 +8,7 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = (grunt) => {
 
   // Project configuration.
   grunt.initConfig({
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  grunt.registerTask('copy', 'Copy fixtures to a temp location.', function() {
+  grunt.registerTask('copy', 'Copy fixtures to a temp location.', () => {
     grunt.file.copy('test/fixtures/fr.po', 'tmp/fixtures/fr.po');
   });
 
